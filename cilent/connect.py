@@ -55,7 +55,7 @@ def checkPos(token: str, lat: str, lng: str): # 获取打卡位置
 	check = requests.post(url = check_url, headers = check_headers,json = pos_data)
 	return check
 
-def sign(token: str, lat: str, lng: str, pic_url = "/upload/tmp/L68o8nyaBVJJq302XH5OpAE68S3Zb5hvQbkHXECN.jpg" : str): # 默认上传图片的地方，后来这儿有点小bug，后续会修复
+def sign(token: str, lat: str, lng: str, pic_url = "/upload/tmp/L68o8nyaBVJJq302XH5OpAE68S3Zb5hvQbkHXECN.jpg"): # 默认上传图片的地方，后来这儿有点小bug，后续会修复
 	post_url = "http://shixi.dfinfo.net.cn/api/plan/sign/set"
 	check_headers = {
 		"Host": "shixi.dfinfo.net.cn",
@@ -109,7 +109,7 @@ def log(token: str):
 	return (log_post.status_code == 200, json.loads(log_post.text))
 
 def is_daily_log() -> bool: # 确保一天只提交一次日报，避免重复提交
-	
+	pass
 
 
 
