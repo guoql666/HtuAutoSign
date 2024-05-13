@@ -1,7 +1,7 @@
 # HtuAutoSign
-  This project is focus on solve Htu Sign Problem
-  本项目致力于解决Htu所使用的智慧实习平台中签到难，打卡难，请假难的问题
-  本项目仍处于初级开发阶段，尚有许多难题亟需解决，欢迎各位积极提交issue和pr，一起让这个项目变的更好
+  This project is focus on solve Htu Sign Problem  
+  本项目致力于解决Htu所使用的智慧实习平台中签到难，打卡难，请假难的问题  
+  本项目仍处于初级开发阶段，尚有许多难题亟需解决，欢迎各位积极提交issue和pr，一起让这个项目变的更好  
 
 # Install
   由于本项目处于初级阶段，较难安装。。。
