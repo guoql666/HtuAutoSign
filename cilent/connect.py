@@ -3,6 +3,7 @@ from time import sleep,time
 import json
 import os
 import random
+from zhipuai import ZhipuAI
 
 server_url = "" # 你对应的url
 '''
@@ -89,6 +90,28 @@ def get_random_log(): # 从daily路径中随机抽取一篇当做日报
 		file.close()
 	return log
 
+# 这个方法用于去除字符串中的换行符
+def remove_newlines(text):
+    return text.replace("\n", "")
+
+# 调用glm模型，生成日报，注意填写apikey
+def generate_chat_completion():
+    api_key = ""  # 请填写您自己的APIKey,智谱开发者平台里面获取。
+    model = "glm-3-turbo"  # 填写需要调用的模型名称
+    system_message = "你是一个大三的计算机实习生,每天都需要提交实习100字的关于当天实习内容的报告"
+    user_message = "今天"
+
+    client = ZhipuAI(api_key=api_key)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": user_message},
+        ],
+        stream=False,
+    )
+    output = response.choices[0].message.content
+    return remove_newlines(output)
 
 def log(token: str):
 	log_url = "http://shixi.dfinfo.net.cn/api/plan/daily/set"
@@ -102,7 +125,8 @@ def log(token: str):
 		"Content-Type": "application/json"
 		}
 
-	log = get_random_log()
+	# log = get_random_log()
+	log = generate_chat_completion()
 	date_time = int(time()//86400 * 86400 - 28800) # 86400是一天时间，由于时间是从1970年1月1日8点计算，因此减去8小时偏移量，得到当日零点时间戳
 	log_data = {"plan_id":1001,"time":[str(date_time)],"content":log}
 	log_post = requests.post(url = log_url, headers = log_headers, json = log_data)
