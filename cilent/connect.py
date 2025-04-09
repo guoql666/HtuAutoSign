@@ -31,17 +31,17 @@ def checkUserToken(token: str): # 判断token是否有效
 		"Host": "shixi.dfinfo.net.cn",
 		"User-Agent": "Mozilla/5.0 (Linux; Android 12; BNE-AL00 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Safari/537.36 MMWEBID/4997 MicroMessenger/8.0.35.2360(0x2800235D) WeChat/arm64 Weixin Android Tablet NetType/WIFI Language/zh_CN ABI/arm64",
 		"X-Requested-With": "com.tencent.mm",
-		"Referer": "http://shixi.dfinfo.net.cn/my",
+		"Referer": "https://shixi.dfinfo.net.cn/my",
 		"Accept": "application/json, text/plain, */*",
 		"Authorization": f"Bearer {token}"
 		}
-	check_url = "http://shixi.dfinfo.net.cn/api/user/plan/list"
+	check_url = "https://shixi.dfinfo.net.cn/api/user/plan/list"
 	check = requests.post(url = check_url, headers = check_headers)
 	return (check.status_code == 200, check.text)
 
 
 def checkPos(token: str, lat: str, lng: str): # 获取打卡位置
-	check_url = "http://shixi.dfinfo.net.cn/api/plan/sign/check"
+	check_url = "https://shixi.dfinfo.net.cn/api/plan/sign/check"
 	check_headers = {
 		"Host": "shixi.dfinfo.net.cn",
 		"User-Agent": "Mozilla/5.0 (Linux; Android 12; BNE-AL00 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Safari/537.36 MMWEBID/4997 MicroMessenger/8.0.35.2360(0x2800235D) WeChat/arm64 Weixin Android Tablet NetType/WIFI Language/zh_CN ABI/arm64",
@@ -57,12 +57,12 @@ def checkPos(token: str, lat: str, lng: str): # 获取打卡位置
 	return check
 
 def sign(token: str, lat: str, lng: str, pic_url = "/upload/tmp/L68o8nyaBVJJq302XH5OpAE68S3Zb5hvQbkHXECN.jpg"): # 默认上传图片的地方，后来这儿有点小bug，后续会修复
-	post_url = "http://shixi.dfinfo.net.cn/api/plan/sign/set"
+	post_url = "https://shixi.dfinfo.net.cn/api/plan/sign/set"
 	check_headers = {
 		"Host": "shixi.dfinfo.net.cn",
 		"User-Agent": "Mozilla/5.0 (Linux; Android 12; BNE-AL00 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Safari/537.36 MMWEBID/4997 MicroMessenger/8.0.35.2360(0x2800235D) WeChat/arm64 Weixin Android Tablet NetType/WIFI Language/zh_CN ABI/arm64",
 		"X-Requested-With": "com.tencent.mm",
-		"Referer": "http://shixi.dfinfo.net.cn/student/sign",
+		"Referer": "https://shixi.dfinfo.net.cn/student/sign",
 		"Accept": "application/json, text/plain, */*",
 		"Authorization": f"Bearer {token}",
 		"Content-Type": "application/json"
@@ -114,7 +114,7 @@ def generate_chat_completion():
     return remove_newlines(output)
 
 def log(token: str):
-	log_url = "http://shixi.dfinfo.net.cn/api/plan/daily/set"
+	log_url = "https://shixi.dfinfo.net.cn/api/plan/daily/set"
 	log_headers = {
 		"Host": "shixi.dfinfo.net.cn",
 		"User-Agent": "Mozilla/5.0 (Linux; Android 12; BNE-AL00 Build/V417IR; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/91.0.4472.114 Safari/537.36 MMWEBID/4997 MicroMessenger/8.0.35.2360(0x2800235D) WeChat/arm64 Weixin Android Tablet NetType/WIFI Language/zh_CN ABI/arm64",
